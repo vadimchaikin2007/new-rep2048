@@ -1,7 +1,8 @@
 function HTMLActuator() {
-  this.tileContainer    = document.querySelector(".tile-container");
-  this.scoreContainer   = document.querySelector(".score-container");
-  this.bestContainer    = document.querySelector(".best-container");
+  this.tileContainer = document.querySelector(".tile-container");
+  this.scoreValueContainer = document.querySelector(".score-value");
+  this.scoreContainer = document.querySelector(".score-container");
+  this.bestContainer = document.querySelector(".best-value");
   this.messageContainer = document.querySelector(".game-message");
   this.sharingContainer = document.querySelector(".score-sharing");
 
@@ -32,7 +33,6 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
         self.message(true); // You win!
       }
     }
-
   });
 };
 
@@ -52,25 +52,25 @@ HTMLActuator.prototype.clearContainer = function (container) {
 
 HTMLActuator.prototype.addTile = function (tile) {
   var valueMap = {
-    2 :    '<Udacity>',
-    4 :    '<Intro CS>',
-    8 :    "skills=['code']",
-    16 :   "skills.add('CSS')",
-    32 :   '</Intro CS>',
-    64 :   '<Job search>',
-    128 :  'getJob(skills)',
-    256 :  '</Job search>',
-    512 :  'if Udacious:',
-    1024 : 'skills.increase()',
-    2048 : 'myJob.advance()',
-    4096 : 'myCareer=myJob'
-  }
+    2: "<Udacity>",
+    4: "<Intro CS>",
+    8: "skills=['code']",
+    16: "skills.add('CSS')",
+    32: "</Intro CS>",
+    64: "<Job search>",
+    128: "getJob(skills)",
+    256: "</Job search>",
+    512: "if Udacious:",
+    1024: "skills.increase()",
+    2048: "myJob.advance()",
+    4096: "myCareer=myJob",
+  };
   var self = this;
 
-  var wrapper   = document.createElement("div");
-  var inner     = document.createElement("div");
-  
-  var position  = tile.previousPosition || { x: tile.x, y: tile.y };
+  var wrapper = document.createElement("div");
+  var inner = document.createElement("div");
+
+  var position = tile.previousPosition || { x: tile.x, y: tile.y };
   var positionClass = this.positionClass(position);
 
   // We can't use classlist because it somehow glitches when replacing classes
@@ -81,8 +81,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  //inner.textContent = tile.value;
-  inner.textContent = valueMap[tile.value];
+  inner.textContent = tile.value; // Тепер тут будуть цифри!
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
@@ -124,18 +123,18 @@ HTMLActuator.prototype.positionClass = function (position) {
 };
 
 HTMLActuator.prototype.updateScore = function (score) {
-  this.clearContainer(this.scoreContainer);
+  // Обновляем саму цифру в маленьком блоке
+  this.scoreValueContainer.textContent = score;
 
   var difference = score - this.score;
   this.score = score;
-
-  this.scoreContainer.textContent = this.score;
 
   if (difference > 0) {
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
     addition.textContent = "+" + difference;
 
+    // Добавляем анимацию в ОБЩУЮ плашку (score-container)
     this.scoreContainer.appendChild(addition);
   }
 };
@@ -145,7 +144,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 };
 
 HTMLActuator.prototype.message = function (won) {
-  var type    = won ? "game-won" : "game-over";
+  var type = won ? "game-won" : "game-over";
   var message = won ? "You win!" : "Game over!";
 
   if (typeof ga !== "undefined") {
@@ -172,7 +171,10 @@ HTMLActuator.prototype.scoreTweetButton = function () {
   tweet.setAttribute("href", "https://twitter.com/share");
   tweet.textContent = "Tweet";
 
-  var text = "" + this.score + " points in Udacity2048! http://ow.ly/vpoFS Code your own game in their new mini course http://ow.ly/vpaLY #2048game"
+  var text =
+    "" +
+    this.score +
+    " points in Udacity2048! http://ow.ly/vpoFS Code your own game in their new mini course http://ow.ly/vpaLY #2048game";
   tweet.setAttribute("data-text", text);
 
   return tweet;

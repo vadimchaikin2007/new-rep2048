@@ -40,81 +40,88 @@
   </head>
   <body>
     <div class="container">
-      <div class="heading">
-        <h1 class="title">Make 2048</h1>
-        <div class="scores-container">
-          <div class="score-container">0</div>
-          <div class="best-container">0</div>
-        </div>
-      </div>
-
-      <div class="above-game">
-        <p class="game-intro">
-          <a class="restart-button">New Game</a>
-          Use the arrow keys to slide tiles. Combine similar tiles to create new
-          ones.
-        </p>
-      </div>
-
-      <div class="pre-game">
-        <p class="learn">
-          Learn to make your own version of 2048 in 30 minutes in Udacity's mini
-          online class for beginners.
-        </p>
-        <a class="learn" href="https://www.udacity.com/course/ud248"
-          >Take the Class!</a
-        >
-      </div>
-
-      <div class="game-container">
-        <div class="game-message">
-          <p></p>
-          <div class="lower">
-            <a
-              href="http://www.udacity.com/course/ud248"
-              class="learn learn-low"
-              >Take the Class!</a
-            >
-            <a class="retry-button">Play Again</a>
-            <div class="score-sharing"></div>
+      <div class="main-content">
+        <div class="heading">
+          <h1 class="title">Make 2048</h1>
+          <!-- <div class="scores-container"> -->
+          <div class="score-container">
+            <p class="score-text">Score</p>
+            <div class="score-value">0</div>
           </div>
+          <!-- <div class="score-container">0</div> -->
+          <div class="best-container">
+            <p class="best-text">Best</p>
+            <div class="best-value">0</div>
+          </div>
+
+          <div class="restart-button">New Game</div>
+          <!-- </div> -->
         </div>
 
-        <div class="grid-container">
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
-          <div class="grid-row">
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-            <div class="grid-cell"></div>
-          </div>
+        <div class="above-game">
+          <p class="game-intro">
+            Use the arrow keys to slide tiles. Combine similar tiles to create
+            new ones.
+          </p>
         </div>
 
-        <div class="tile-container"></div>
-      </div>
+        <div class="pre-game">
+          <p class="learn">
+            Learn to make your own version of 2048 in 30 minutes in Udacity's
+            mini online class for beginners.
+          </p>
+          <a class="learn" href="https://www.udacity.com/course/ud248"
+            >Take the Class!</a
+          >
+        </div>
+        <div class="to-change-position-for-game-container">
+          <div class="game-container">
+            <div class="game-message">
+              <p style="color: white"></p>
+              <div class="lower">
+                <a class="retry-button">Play Again</a>
+              </div>
+            </div>
 
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container"></div>
+          </div>
+        </div>
+      </div>
       <p class="game-explanation">
         <strong class="important">Make your own version:</strong> If you'd like
         to make your own version of this game, check out Udacity's newest course
         for beginners
-        <a href="https://www.udacity.com/course/ud248" target="_blank"
+        <a
+          style="color: #4f2f2f; font-weight: bold"
+          href="https://www.udacity.com/course/ud248"
+          target="_blank"
           >Make your own 2048</a
         >. No programming experience is required and in less than half an hour
         you'll dig into the source code, make some changes, and have your own
@@ -129,7 +136,10 @@
       <hr />
       <p>
         This is a modified version of the
-        <a href="http://gabrielecirulli.github.io/2048/" target="_blank"
+        <a
+          style="color: #4f2f2f; font-weight: bold"
+          href="http://gabrielecirulli.github.io/2048/"
+          target="_blank"
           >original game</a
         >
         created by Gabriele Cirulli.
