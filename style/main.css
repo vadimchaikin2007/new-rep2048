@@ -1,216 +1,82 @@
-/* анімація злиття двох плиток. Вона створює той самий приємний ефект «пульсації», коли дві однакові планети стикаються і перетворюються на одну нову. */
-@-webkit-keyframes pop {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-  }
 
-  50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    transform: scale(1.2);
-  }
+:root {
+  --bg-color: #f3f0db;
+  --text-color: #4f2f2f;
+  --board-bg: #1e6477;
+  --tile-bg: rgba(238, 228, 218, 0.35);
+  --score-bg: #e2dacb;
+  --message-bg: rgba(150, 150, 150, 0.83);
+  --font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  /* Tile Colors */
+  --tile-color-2: radial-gradient(circle, #cbcbc2);
+  --tile-color-4: radial-gradient(circle, #dfd0a7);
+  --tile-color-8: radial-gradient(circle, #ee8e3e);
+  --tile-color-16: radial-gradient(circle, #c75205);
+  --tile-color-32: radial-gradient(circle, #c23411);
+  --tile-color-64: radial-gradient(circle, #ff0000);
+  --tile-color-128: radial-gradient(circle, #aab306);
+  --tile-color-256: #00ffcc;
+  --tile-color-512: #d416e2;
+  --tile-color-1024: #11d83c;
+  --tile-color-2048: rgb(0, 0, 0);
 
-  100% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
+  /* Dimensional variables (desktop default) */
+  --tile-size: 106.25px;
+  --tile-gap: 15px;
+  --tile-stride: calc(var(--tile-size) + var(--tile-gap));
+  
+  --board-padding: 15px;
+  --board-size: calc(4 * var(--tile-size) + 3 * var(--tile-gap) + 2 * var(--board-padding));
 }
-@-moz-keyframes pop {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-  }
 
-  50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
-}
+/* Animations */
 @keyframes pop {
-  0% {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-  }
-
-  50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-/* анимация коли гравець бачить, де саме після його ходу з'явилася нова плитка. Вона ніби "вистрибує" на поле. */
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@-moz-keyframes appear {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 @keyframes appear {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    transform: scale(0);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-/*Зачисление очков анимация  */
-@-webkit-keyframes move-up {
-  0% {
-    top: 25px;
-    opacity: 1;
-  }
-
-  100% {
-    top: -50px;
-    opacity: 0;
-  }
-}
-@-moz-keyframes move-up {
-  0% {
-    top: 25px;
-    opacity: 1;
-  }
-
-  100% {
-    top: -50px;
-    opacity: 0;
-  }
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
 }
 @keyframes move-up {
-  0% {
-    top: 25px;
-    opacity: 1;
-  }
-
-  100% {
-    top: -50px;
-    opacity: 0;
-  }
-}
-
-/* Конец игры анимация */
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-@-moz-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% { top: 25px; opacity: 1; }
+  100% { top: -50px; opacity: 0; }
 }
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes slide-up {
-  0% {
-    margin-top: 72%;
-  }
-
-  100% {
-    margin-top: 35%;
-  }
-}
-@-moz-keyframes slide-up {
-  0% {
-    margin-top: 72%;
-  }
-
-  100% {
-    margin-top: 35%;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 @keyframes slide-up {
-  0% {
-    margin-top: 72%;
-  }
-
-  100% {
-    margin-top: 35%;
-  }
+  0% { margin-top: 72%; }
+  100% { margin-top: 35%; }
+}
+@keyframes slide-up-mobile {
+  0% { transform: translateY(60px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: #f3f0db;
-  color: #4f2f2f;
-  font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
+html, body {
+  margin: 20px 0;
+  padding: 0 20px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
 }
+
 .main-content {
-  min-height: 100vh; /* Занимает всю высоту окна браузера */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Контент прижат к верху */
+  justify-content: flex-start;
   box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  max-width: 1600px; /* limits expansion on very large monitors */
+  margin: 0 auto;
 }
 
 .heading {
@@ -218,46 +84,62 @@ body {
   grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
   width: 100%;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 h1.title {
   margin: 0;
   font-weight: bold;
   line-height: 1;
+  font-size: 80px;
+  height: 109px;
 }
 
-.score-container,
-.best-container {
+.score-container, .best-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #e2dacb;
+  background: var(--score-bg);
   text-align: center;
   font-weight: bold;
   box-sizing: border-box;
+  gap: 10px;
+  height: 109px;
+  padding: 15px 20px;
+  border-radius: 20px;
 }
 
 .best-container {
-  background: #f3f0db;
-  border: 2px solid #e2dacb;
+  background: var(--bg-color);
+  border: 2px solid var(--score-bg);
 }
 
-.score-text,
-.best-text {
+.score-text, .best-text {
   text-transform: uppercase;
+  font-size: 25px;
+  margin-bottom: 4px !important;
 }
 
-.learn {
-  width: fit-content;
+.score-value, .best-value {
+  font-size: 25px;
 }
 
-.restart-button,
-a.retry-button,
-a.learn {
+.score-addition {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-color);
+  font-size: 25px;
+  font-weight: bold;
+  animation: move-up 600ms ease-in both;
+}
+
+.restart-button, a.retry-button, a.learn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #4f2f2f;
+  background: var(--text-color);
   color: white;
   font-weight: bold;
   text-transform: uppercase;
@@ -265,36 +147,50 @@ a.learn {
   white-space: nowrap;
   transition: 0.2s;
   text-decoration: none;
-  border: 2px solid #4f2f2f; /* Добавлено, чтобы кнопка не дергалась при ховере */
+  border: 2px solid var(--text-color);
 }
 
 .restart-button {
   grid-column: 4;
   margin: 0 !important;
+  font-size: 30px;
+  height: 60%;
+  width: auto;
+  border-radius: 20px;
 }
 
-.restart-button:hover,
-a.learn:hover {
+.restart-button:hover, a.learn:hover {
   background: transparent;
-  color: #4f2f2f;
+  color: var(--text-color);
+  border-color: var(--text-color);
 }
+
 a.retry-button:hover {
   background: transparent;
   color: white;
 }
 
-.score-addition {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #4f2f2f;
-  font-size: 25px;
-  font-weight: bold;
-  animation: move-up 600ms ease-in both;
+a.learn {
+  width: fit-content;
+  display: inline-flex;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.game-intro {
+  display: block;
+  font-size: 30px;
+  box-sizing: border-box;
+  line-height: 1.65;
+}
+
+.pre-game {
+  font-size: 30px;
 }
 
 p {
   margin: 0;
+  font-size: 30px;
 }
 
 a {
@@ -313,6 +209,17 @@ hr {
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
+.above-game {
+  margin-top: 10px;
+}
+
+.above-game:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .to-change-position-for-game-container {
   display: flex;
   justify-content: center;
@@ -320,171 +227,54 @@ hr {
 
 .game-container {
   position: relative;
-  background: #1e6477;
+  background: var(--board-bg);
   box-sizing: border-box;
+  margin-top: 50px;
+  width: var(--board-size);
+  height: var(--board-size);
+  padding: var(--board-padding);
+  border-radius: 6px;
 }
-
-/* .game-message {
-  display: none;
-
-  position: absolute;
-
-  top: 0;
-
-  right: 0;
-
-  bottom: 0;
-
-  left: 0;
-
-  background: rgba(150, 150, 150, 0.83);
-
-  z-index: 100;
-
-  padding-top: 40px;
-
-  text-align: center;
-
-  -webkit-animation: fade-in 800ms ease 1200ms;
-
-  -moz-animation: fade-in 800ms ease 1200ms;
-
-  animation: fade-in 800ms ease 1200ms;
-
-  -webkit-animation-fill-mode: both;
-
-  -moz-animation-fill-mode: both;
-
-  animation-fill-mode: both;
-}
-
-.game-message .lower {
-  display: block;
-
-  margin-top: 29px;
-}
-
-.game-message .mailing-list {
-  margin-top: 52px;
-}
-
-.game-message .mailing-list strong {
-  display: block;
-
-  margin-bottom: 10px;
-}
-
-.game-message .mailing-list .mailing-list-email-field {
-  width: 230px;
-
-  margin-right: 5px;
-}
-
-.game-message a {
-  display: inline-block;
-
-  background: #4f2f2f;
-
-  text-decoration: none;
-
-  color: #f9f6f2;
-
-  cursor: pointer;
-}
-
-.game-message .score-sharing {
-  display: inline-block;
-
-  vertical-align: middle;
-
-  margin-left: 10px;
-}
-
-.game-message.game-won {
-  background: rgba(237, 194, 46, 0.5);
-
-  color: #f9f6f2;
-}
-
-.game-message.game-won a.keep-playing-button {
-  display: inline-block;
-}
-
-.game-message.game-won,
-.game-message.game-over {
-  display: block;
-}
-
-.game-message.game-won p,
-.game-message.game-over p {
-  -webkit-animation: slide-up 1.5s ease-in-out 2500ms;
-
-  -moz-animation: slide-up 1.5s ease-in-out 2500ms;
-
-  animation: slide-up 1.5s ease-in-out 2500ms;
-
-  -webkit-animation-fill-mode: both;
-
-  -moz-animation-fill-mode: both;
-
-  animation-fill-mode: both;
-}
-
-.game-message.game-won .mailing-list,
-.game-message.game-over .mailing-list {
-  -webkit-animation: fade-in 1.5s ease-in-out 2500ms;
-
-  -moz-animation: fade-in 1.5s ease-in-out 2500ms;
-
-  animation: fade-in 1.5s ease-in-out 2500ms;
-
-  -webkit-animation-fill-mode: both;
-
-  -moz-animation-fill-mode: both;
-
-  animation-fill-mode: both;
-} */
 
 .game-message {
   display: none;
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(150, 150, 150, 0.83);
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: var(--message-bg);
   z-index: 100;
   text-align: center;
-  /* Центрируем контент внутри */
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-
   animation: fade-in 800ms ease 500ms both;
 }
 
-/* Когда игра окончена, включаем flex */
-.game-message.game-won,
-.game-message.game-over {
+.game-message.game-won, .game-message.game-over {
   display: flex;
 }
 
 .game-message p {
   font-weight: bold;
-  color: #4f2f2f;
+  color: var(--text-color);
   margin: 0;
-  /* Твоя любимая анимация подъема */
+  font-size: 60px;
+  height: 60px;
+  line-height: 60px;
+  margin-top: 222px;
   animation: slide-up 1.5s ease-in-out 800ms both;
 }
 
 .game-message a {
   display: inline-block;
-  background: #4f2f2f;
+  background: var(--text-color);
   color: #f9f6f2;
   text-decoration: none;
   border-radius: 25px;
   cursor: pointer;
-  /* Кнопка тоже должна плавно появиться */
+  font-size: 30px;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 42px;
+  margin-left: 9px;
   animation: fade-in 1s ease 1500ms both;
 }
 
@@ -498,6 +288,9 @@ hr {
   z-index: 1;
 }
 
+.grid-row {
+  margin-bottom: var(--tile-gap);
+}
 .grid-row:last-child {
   margin-bottom: 0;
 }
@@ -509,7 +302,11 @@ hr {
 
 .grid-cell {
   float: left;
-  background: rgba(238, 228, 218, 0.35);
+  background: var(--tile-bg);
+  width: var(--tile-size);
+  height: var(--tile-size);
+  margin-right: var(--tile-gap);
+  border-radius: 25px;
 }
 .grid-cell:last-child {
   margin-right: 0;
@@ -518,67 +315,62 @@ hr {
 .tile-container {
   position: absolute;
   z-index: 2;
+  font-size: 25px;
 }
 
 .tile {
   position: absolute;
   transition: 100ms ease-in-out;
   transition-property: transform;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-radius: 25px;
 }
-/* Змінюємо вигляд плиток на енергетичні сфери */
+
 .tile .tile-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  line-height: 1 !important; /* Прибираємо мрак із line-height */
+  line-height: 1 !important;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
-/* Кольори плиток (замість картинок) */
-.tile.tile-2 .tile-inner {
-  background: radial-gradient(circle, #cbcbc2);
-} /* Космічний пил */
-.tile.tile-4 .tile-inner {
-  background: radial-gradient(circle, #dfd0a7);
-} /* Астероїд */
-.tile.tile-8 .tile-inner {
-  background: radial-gradient(circle, #ee8e3e);
-} /* Синя зірка */
-.tile.tile-16 .tile-inner {
-  background: radial-gradient(circle, #c75205);
-} /* Сонце */
-.tile.tile-32 .tile-inner {
-  background: radial-gradient(circle, #c23411);
-} /* Червоний гігант */
-.tile.tile-64 .tile-inner {
-  background: radial-gradient(circle, #ff0000);
-} /* Квазар */
-.tile.tile-128 .tile-inner {
-  background: radial-gradient(circle, #aab306);
-} /* Пульсар */
-.tile.tile-256 .tile-inner {
-  background: #00ffcc;
-  color: black !important;
-}
-.tile.tile-512 .tile-inner {
-  background: #d416e2;
-  color: black !important;
-}
-.tile.tile-1024 .tile-inner {
-  background: #11d83c;
-  color: black !important;
-}
-.tile.tile-2048 .tile-inner {
-  background: rgb(0, 0, 0);
+/* Tile Positioning using CSS calc() */
+.tile.tile-position-1-1 { transform: translate(0, 0); }
+.tile.tile-position-1-2 { transform: translate(0, calc(var(--tile-stride) * 1)); }
+.tile.tile-position-1-3 { transform: translate(0, calc(var(--tile-stride) * 2)); }
+.tile.tile-position-1-4 { transform: translate(0, calc(var(--tile-stride) * 3)); }
 
-  color: rgb(0, 252, 235) !important;
-}
-.tile.tile-super .tile-inner {
-  color: #f9f6f2;
-  background: #3c3a32;
-  font-weight: medium;
-  font-size: 12px;
-}
+.tile.tile-position-2-1 { transform: translate(calc(var(--tile-stride) * 1), 0); }
+.tile.tile-position-2-2 { transform: translate(calc(var(--tile-stride) * 1), calc(var(--tile-stride) * 1)); }
+.tile.tile-position-2-3 { transform: translate(calc(var(--tile-stride) * 1), calc(var(--tile-stride) * 2)); }
+.tile.tile-position-2-4 { transform: translate(calc(var(--tile-stride) * 1), calc(var(--tile-stride) * 3)); }
+
+.tile.tile-position-3-1 { transform: translate(calc(var(--tile-stride) * 2), 0); }
+.tile.tile-position-3-2 { transform: translate(calc(var(--tile-stride) * 2), calc(var(--tile-stride) * 1)); }
+.tile.tile-position-3-3 { transform: translate(calc(var(--tile-stride) * 2), calc(var(--tile-stride) * 2)); }
+.tile.tile-position-3-4 { transform: translate(calc(var(--tile-stride) * 2), calc(var(--tile-stride) * 3)); }
+
+.tile.tile-position-4-1 { transform: translate(calc(var(--tile-stride) * 3), 0); }
+.tile.tile-position-4-2 { transform: translate(calc(var(--tile-stride) * 3), calc(var(--tile-stride) * 1)); }
+.tile.tile-position-4-3 { transform: translate(calc(var(--tile-stride) * 3), calc(var(--tile-stride) * 2)); }
+.tile.tile-position-4-4 { transform: translate(calc(var(--tile-stride) * 3), calc(var(--tile-stride) * 3)); }
+
+/* Tile Inner Colors */
+.tile.tile-2 .tile-inner { background: var(--tile-color-2); }
+.tile.tile-4 .tile-inner { background: var(--tile-color-4); }
+.tile.tile-8 .tile-inner { background: var(--tile-color-8); }
+.tile.tile-16 .tile-inner { background: var(--tile-color-16); }
+.tile.tile-32 .tile-inner { background: var(--tile-color-32); }
+.tile.tile-64 .tile-inner { background: var(--tile-color-64); }
+.tile.tile-128 .tile-inner { background: var(--tile-color-128); }
+.tile.tile-256 .tile-inner { background: var(--tile-color-256); color: black !important; }
+.tile.tile-512 .tile-inner { background: var(--tile-color-512); color: black !important; }
+.tile.tile-1024 .tile-inner { background: var(--tile-color-1024); color: black !important; }
+.tile.tile-2048 .tile-inner { background: var(--tile-color-2048); color: rgb(0, 252, 235) !important; }
+.tile.tile-super .tile-inner { background: #3c3a32; color: #f9f6f2; font-weight: 500; font-size: 12px; }
 
 .tile-new .tile-inner {
   animation: appear 200ms ease 100ms backwards;
@@ -588,254 +380,27 @@ hr {
   animation: pop 200ms ease 100ms backwards;
 }
 
-.above-game:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-/* Кнопка запуску місії та кнопки в кінці гри */
-
-/* Специфічні налаштування для кнопок рестарту та навчання */
-
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-/* АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ АДАПТИВ  АДАПТИВ */
-
-@media screen and (max-width: 2560px) {
-  html,
-  body {
-    margin: 20px 0;
-    padding: 0 20px;
-  }
-  .container {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
-
-  .heading {
-    gap: 15px; /* Відступ між елементами */
-    margin-bottom: 40px;
-    height: auto;
-  }
-
-  h1.title {
-    font-size: 80px;
-    height: 109px;
-
-    /* 122 */
-  }
-
-  /* 3. Контейнер для ОБОХ блоків рахунку (по центру) */
-  /* ВАЖЛИВО: В HTML переконайся, що .score-container і .best-container лежать всередині .scores-container */
-  .score-container {
-    box-sizing: border-box;
-    gap: 10px;
-    height: 109px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 20px;
-    /* font-size: 25px; */
-  }
-
-  .best-container {
-    gap: 10px;
-    height: 109px;
-    border: 2px solid #e2dacb;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    border-radius: 20px;
-
-    /* font-size: 25px; */
-  }
-
-  /* Убираем гигантские отступы параграфа */
-  .score-text,
-  .best-text {
-    font-size: 25px;
-
-    margin-bottom: 4px !important; /* Маленький отступ до цифр */
-  }
-
-  /* Стили цифр */
-  .score-value,
-  .best-value {
-    font-size: 25px;
-  }
-
-  /* 5. Кнопка (справа) */
-  .restart-button {
-    font-size: 30px;
-    height: 60%;
-    width: auto;
-
-    border-radius: 20px;
-  }
-
-  .restart-button:hover {
-    background: transparent;
-    border: 2px solid #4f2f2f;
-    color: #4f2f2f;
-  }
-  /* 
-asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd  
-asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd asdsdasdasdasdsadasdasddasd 
-   */
-  .game-intro {
-    display: block;
-    font-size: 30px;
-    box-sizing: border-box;
-    line-height: 1.65;
-  }
-  .pre-game {
-    font-size: 30px;
-  }
-
-  a.learn {
-    display: inline-flex;
-    border-radius: 20px;
-    padding: 5px;
-  }
-
-  .above-game {
-    margin-top: 10px;
-    /* width: fit-content; */
-  }
-
-  .game-container {
-    margin-top: 50px;
-    width: 500px;
-    height: 500px;
-    padding: 15px;
-    border-radius: 6px;
-  }
-
-  .tile-container {
-    font-size: 25px;
-  }
-
-  .grid-row {
-    margin-bottom: 15px;
-  }
-  .grid-cell,
-  .tile,
-  .tile .tile-inner {
-    width: 106.25px; /* Ідеальний розмір для поля 500px */
-    height: 106.25px;
-    margin-right: 15px;
-    border-radius: 25px;
-  }
-
-  /* Крок зміщення = 106.25 + 15 (відступ) = 121.25px */
-  .tile.tile-position-1-1 {
-    transform: translate(0, 0);
-  }
-  .tile.tile-position-1-2 {
-    transform: translate(0, 121px);
-  }
-  .tile.tile-position-1-3 {
-    transform: translate(0, 242px);
-  }
-  .tile.tile-position-1-4 {
-    transform: translate(0, 363px);
-  }
-
-  .tile.tile-position-2-1 {
-    transform: translate(121px, 0);
-  }
-  .tile.tile-position-2-2 {
-    transform: translate(121px, 121px);
-  }
-  .tile.tile-position-2-3 {
-    transform: translate(121px, 242px);
-  }
-  .tile.tile-position-2-4 {
-    transform: translate(121px, 363px);
-  }
-
-  .tile.tile-position-3-1 {
-    transform: translate(242px, 0);
-  }
-  .tile.tile-position-3-2 {
-    transform: translate(242px, 121px);
-  }
-  .tile.tile-position-3-3 {
-    transform: translate(242px, 242px);
-  }
-  .tile.tile-position-3-4 {
-    transform: translate(242px, 363px);
-  }
-
-  .tile.tile-position-4-1 {
-    transform: translate(363px, 0);
-  }
-  .tile.tile-position-4-2 {
-    transform: translate(363px, 121px);
-  }
-  .tile.tile-position-4-3 {
-    transform: translate(363px, 242px);
-  }
-  .tile.tile-position-4-4 {
-    transform: translate(363px, 363px);
-  }
-
-  .game-explanation {
-    margin-top: 30px;
-    font-size: 30px;
-  }
-}
-p {
+.game-explanation {
+  margin-top: 30px;
   font-size: 30px;
 }
-.game-message p {
-  font-size: 60px;
 
-  font-weight: bold;
-
-  height: 60px;
-
-  line-height: 60px;
-
-  margin-top: 222px;
-}
-
-.game-message a {
-  font-size: 30px;
-
-  border-radius: 25px;
-
-  padding: 0 20px;
-
-  color: #f9f6f2;
-
-  height: 40px;
-
-  line-height: 42px;
-
-  margin-left: 9px;
-}
+/* ------------------------------------------- */
+/* Media Queries for Tablets and Mobiles */
+/* ------------------------------------------- */
 
 @media screen and (max-width: 750px) {
-  html,
-  body {
+  :root {
+    --tile-size: 65px;
+    --tile-gap: 10px;
+    --board-padding: 10px;
+  }
+
+  html, body {
     margin: 15px 0;
     padding: 0 15px;
   }
 
-  /* Перестраиваем шапку: Название сверху, остальное в ряд под ним */
   .heading {
     display: flex;
     flex-wrap: wrap;
@@ -844,377 +409,124 @@ p {
   }
 
   h1.title {
-    width: 100%; /* Название на всю ширину */
+    width: 100%;
     font-size: 55px;
     height: auto;
     text-align: center;
     margin-bottom: 10px;
   }
 
-  .score-container,
-  .best-container {
-    flex: 1; /* Очки делят пространство поровну */
+  .score-container, .best-container {
+    flex: 1;
     height: 80px;
     padding: 10px;
     border-radius: 10px;
     gap: 4px;
   }
 
-  .score-text,
-  .best-text {
-    font-size: 18px;
-  }
-  .score-value,
-  .best-value {
+  .score-text, .best-text, .score-value, .best-value {
     font-size: 18px;
   }
 
   .restart-button {
-    width: 40%; /* Кнопка на мобилке удобнее, когда она широкая */
+    width: 40%;
     height: 80px;
     font-size: 25px;
-    order: 3; /* Ставим в самый низ шапки */
+    order: 3;
   }
+
   .pre-game {
     font-size: 20px;
   }
-  a.learn {
-    display: inline-flex;
-    border-radius: 20px;
-    padding: 5px;
-  }
-  /* Масштабируем игровое поле */
+
   .game-container {
-    width: 310px;
-    height: 310px;
-    padding: 10px;
     margin: 20px auto;
   }
 
-  /* Размер плитки для поля 280px: (280 - (padding*2) - (gap*3)) / 4 
-     (280 - 20 - 30) / 4 = 57.5px */
-
-  .grid-row {
-    margin-bottom: 10px;
-  }
-  .grid-cell,
-  .tile,
-  .tile .tile-inner {
-    width: 65px;
-    height: 65px;
-    margin-right: 10px;
+  .grid-cell, .tile {
     border-radius: 10px;
   }
-
   .tile .tile-inner {
     font-size: 22px;
   }
 
-  /* НОВЫЕ КООРДИНАТЫ ДЛЯ МОБИЛОК (Шаг = 57.5 + 10 зазор = 67.5px) */
-  .tile.tile-position-1-1 {
-    transform: translate(0, 0);
-  }
-  .tile.tile-position-1-2 {
-    transform: translate(0, 75px);
-  }
-  .tile.tile-position-1-3 {
-    transform: translate(0, 150px);
-  }
-  .tile.tile-position-1-4 {
-    transform: translate(0, 225px);
-  }
-
-  .tile.tile-position-2-1 {
-    transform: translate(75px, 0);
-  }
-  .tile.tile-position-2-2 {
-    transform: translate(75px, 75px);
-  }
-  .tile.tile-position-2-3 {
-    transform: translate(75px, 150px);
-  }
-  .tile.tile-position-2-4 {
-    transform: translate(75px, 225px);
-  }
-
-  .tile.tile-position-3-1 {
-    transform: translate(150px, 0);
-  }
-  .tile.tile-position-3-2 {
-    transform: translate(150px, 75px);
-  }
-  .tile.tile-position-3-3 {
-    transform: translate(150px, 150px);
-  }
-  .tile.tile-position-3-4 {
-    transform: translate(150px, 225px);
-  }
-
-  .tile.tile-position-4-1 {
-    transform: translate(225px, 0);
-  }
-  .tile.tile-position-4-2 {
-    transform: translate(225px, 75px);
-  }
-  .tile.tile-position-4-3 {
-    transform: translate(225px, 150px);
-  }
-  .tile.tile-position-4-4 {
-    transform: translate(225px, 225px);
-  }
-
-  /* Конец игры на мобилке */
-  /* .game-message p {
-    font-size: 32px !important;
-
-    line-height: 1.1 !important;
-  }
-
-  .game-message a {
-    font-size: 16px !important;
-    padding: 12px 25px !important;
-    height: auto !important;
-    line-height: normal !important;
-  } */
   .game-message {
-    /* Включаем флекс, чтобы центрировать содержимое */
-    display: none; /* Будет перезаписано на flex через JS классом .game-over */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 0;
+    justify-content: center;
   }
-
-  .game-message.game-over,
-  .game-message.game-won {
-    display: flex !important;
-  }
-
   .game-message p {
     font-size: 35px !important;
     margin: 0 !important;
     height: auto !important;
     line-height: 1 !important;
-    /*  плавная анимация через transform */
     animation: slide-up-mobile 1.5s ease-in-out 1200ms both !important;
   }
-
   .game-message .lower {
-    margin-top: 20px !important; /* Создаем гарантированный зазор для кнопки */
+    margin-top: 20px !important;
   }
-
   .game-message a.retry-button {
     font-size: 18px !important;
     height: auto !important;
     line-height: normal !important;
-    /* Кнопка  должна появиться плавно */
     animation: fade-in 1s ease 2000ms both;
   }
 
-  .game-explanation,
-  .game-intro,
-  p {
+  .game-explanation, .game-intro, p {
     font-size: 16px !important;
   }
 }
 
 @media screen and (max-width: 520px) {
-  @keyframes slide-up-mobile {
-    0% {
-      transform: translateY(60px); /* Начинаем ниже */
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0); /* Прилетаем в центр */
-      opacity: 1;
-    }
+  :root {
+    --tile-size: 57.5px;
+    --tile-gap: 10px;
+    --board-padding: 10px;
   }
 
-  html,
-  body {
+  html, body {
     margin: 10px 0;
     padding: 0 10px;
   }
 
-  /* Перестраиваем шапку: Название сверху, остальное в ряд под ним */
   .heading {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     gap: 10px;
   }
 
   h1.title {
-    width: 100%; /* Название на всю ширину */
     font-size: 40px;
-    height: auto;
-    text-align: center;
-    margin-bottom: 10px;
   }
 
-  .score-container,
-  .best-container {
-    flex: 1; /* Очки делят пространство поровну */
+  .score-container, .best-container {
     height: 60px;
     padding: 5px;
     border-radius: 10px;
     gap: 2px;
   }
 
-  .score-text,
-  .best-text {
+  .score-text, .best-text {
     font-size: 12px;
   }
-  .score-value,
-  .best-value {
+
+  .score-value, .best-value {
     font-size: 18px;
   }
 
   .restart-button {
-    width: 100%; /* Кнопка на мобилке удобнее, когда она широкая */
+    width: 100%;
     height: 50px;
     font-size: 20px;
-    order: 3; /* Ставим в самый низ шапки */
   }
+
   .pre-game {
     font-size: 15px;
   }
-  a.learn {
-    display: inline-flex;
-    border-radius: 20px;
-    padding: 5px;
-  }
-  /* Масштабируем игровое поле */
-  .game-container {
-    width: 280px;
-    height: 280px;
-    padding: 10px;
-    margin: 20px auto;
-  }
 
-  /* Размер плитки для поля 280px: (280 - (padding*2) - (gap*3)) / 4 
-     (280 - 20 - 30) / 4 = 57.5px */
-
-  .grid-row {
-    margin-bottom: 10px;
-  }
-  .grid-cell,
-  .tile,
-  .tile .tile-inner {
-    width: 57.5px;
-    height: 57.5px;
-    margin-right: 10px;
+  .grid-cell, .tile {
     border-radius: 8px;
   }
 
   .tile .tile-inner {
     font-size: 20px;
   }
-
-  /* НОВЫЕ КООРДИНАТЫ ДЛЯ МОБИЛОК (Шаг = 57.5 + 10 зазор = 67.5px) */
-  .tile.tile-position-1-1 {
-    transform: translate(0, 0);
-  }
-  .tile.tile-position-1-2 {
-    transform: translate(0, 67.5px);
-  }
-  .tile.tile-position-1-3 {
-    transform: translate(0, 135px);
-  }
-  .tile.tile-position-1-4 {
-    transform: translate(0, 202.5px);
-  }
-
-  .tile.tile-position-2-1 {
-    transform: translate(67.5px, 0);
-  }
-  .tile.tile-position-2-2 {
-    transform: translate(67.5px, 67.5px);
-  }
-  .tile.tile-position-2-3 {
-    transform: translate(67.5px, 135px);
-  }
-  .tile.tile-position-2-4 {
-    transform: translate(67.5px, 202.5px);
-  }
-
-  .tile.tile-position-3-1 {
-    transform: translate(135px, 0);
-  }
-  .tile.tile-position-3-2 {
-    transform: translate(135px, 67.5px);
-  }
-  .tile.tile-position-3-3 {
-    transform: translate(135px, 135px);
-  }
-  .tile.tile-position-3-4 {
-    transform: translate(135px, 202.5px);
-  }
-
-  .tile.tile-position-4-1 {
-    transform: translate(202.5px, 0);
-  }
-  .tile.tile-position-4-2 {
-    transform: translate(202.5px, 67.5px);
-  }
-  .tile.tile-position-4-3 {
-    transform: translate(202.5px, 135px);
-  }
-  .tile.tile-position-4-4 {
-    transform: translate(202.5px, 202.5px);
-  }
-
-  /* Конец игры на мобилке */
-  /* .game-message p {
-    font-size: 32px !important;
-
-    line-height: 1.1 !important;
-  }
-
-  .game-message a {
-    font-size: 16px !important;
-    padding: 12px 25px !important;
-    height: auto !important;
-    line-height: normal !important;
-  } */
-  .game-message {
-    /* Включаем флекс, чтобы центрировать содержимое */
-    display: none; /* Будет перезаписано на flex через JS классом .game-over */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-  }
-
-  .game-message.game-over,
-  .game-message.game-won {
-    display: flex !important;
-  }
-
-  .game-message p {
-    font-size: 35px !important;
-    margin: 0 !important;
-    height: auto !important;
-    line-height: 1 !important;
-    /*  плавная анимация через transform */
-    animation: slide-up-mobile 1.5s ease-in-out 1200ms both !important;
-  }
-
-  .game-message .lower {
-    margin-top: 20px !important; /* Создаем гарантированный зазор для кнопки */
-  }
-
-  .game-message a.retry-button {
-    font-size: 18px !important;
-    height: auto !important;
-    line-height: normal !important;
-    /* Кнопка  должна появиться плавно */
-    animation: fade-in 1s ease 2000ms both;
-  }
-
-  .game-explanation,
-  .game-intro,
-  p {
-    font-size: 16px !important;
-  }
 }
+
